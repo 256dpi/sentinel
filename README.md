@@ -5,3 +5,9 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/256dpi/sentinel)](http://goreportcard.com/report/256dpi/sentinel)
 
 **Kubernetes Event Reporter for Sentry**
+
+Run `sentinel` inside your kubernetes cluster and configure it with the `SENTRY_DSN` of the project that should receive all kubernetes events:
+
+```bash
+kubectl run sentinel --image 256dpi/sentinel --env="SENTRY_DSN=..."
+```
