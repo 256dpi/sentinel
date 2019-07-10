@@ -29,6 +29,7 @@ func main() {
 		Dsn:        dsn,
 		Debug:      os.Getenv("SENTRY_DEBUG") == "true",
 		ServerName: "sentinel",
+		Transport:  sentry.NewHTTPSyncTransport(),
 		Integrations: func([]sentry.Integration) []sentry.Integration {
 			// disable all integrations
 			return nil
