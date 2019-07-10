@@ -11,3 +11,11 @@ Run `sentinel` inside your kubernetes cluster and configure it with the `SENTRY_
 ```bash
 kubectl run sentinel --image 256dpi/sentinel --env="SENTRY_DSN=..."
 ```
+
+Other available configuration parameters:
+
+- `NAMESPACE`: Set to only report events from this namespace.
+- `REPORT_ALL`: Set to `true` to report all events.
+- `SENTRY_DEBUG`: Set to `true` to debug sentry.
+- `KUBE_MASTER`: Configure external kubernetes access.
+- `KUBE_CONFIG`: Configure external kubernetes access.

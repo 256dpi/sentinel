@@ -14,6 +14,9 @@ import (
 	"k8s.io/client-go/tools/clientcmd"
 )
 
+// check if we should report all events
+var reportAll = os.Getenv("REPORT_ALL") == "true"
+
 func main() {
 	// get dsn
 	dsn := os.Getenv("SENTRY_DSN")
@@ -97,6 +100,11 @@ func main() {
 }
 
 func process(event *api.Event) {
+	// ignore normal events if report all is not set
+	if event.Type == api.EventTypeNormal && !reportAll {
+		return
+	}
+
 	// prepare level
 	level := sentry.LevelInfo
 	if event.Type == api.EventTypeWarning {
